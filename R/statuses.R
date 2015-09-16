@@ -228,12 +228,11 @@ retweets = function(id, n=20, ...) {
   return(sapply(doAPICall(cmd, params=params), buildStatus))  
 }
 
-retweeters = function(id, n=20, ...) {
+retweeters = function(id, n=20, cursor=-1 ...) {
   check_id(id)
-  
   cmd = "statuses/retweeters/ids"
-  params = list(id=id, count=n)
-  json = doCursorAPICall(cmd, "ids", num=n, params=params, method="GET", ...)
+  params = list(id=id, count=n, cursor=cursor)
+  json = doCursorAPICall(cmd, c("ids", "next_cursor_str"), num=n, params=params, method="GET", ...)
   json
 }
 

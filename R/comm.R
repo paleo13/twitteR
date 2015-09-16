@@ -153,6 +153,7 @@ doCursorAPICall = function(cmd, type, num=NULL, params=NULL, method='GET', ...) 
     if (is.null(curResults)) {
       return(vals)
     }
+    print(str(curResults))
     vals <- c(vals, curResults[[type]])
     if ((!is.null(num)) && (length(vals) >= num))
       break
